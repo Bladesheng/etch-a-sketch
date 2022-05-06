@@ -2,9 +2,49 @@ body {
   margin: 0px;
   padding: 0px;
   background-color: rgb(14, 15, 22);
+  color: rgb(192, 192, 192);
 
   box-sizing: border-box;
   height: 100vh;
   display: flex;
   flex-flow: column;
+}
+
+.controls {
+  height: 15%;
+
+  flex: 0 1 auto;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 1 1 auto;
+}
+
+.playground {
+  border: 3px solid red;
+
+  width: 250px;
+  height: 250px;
+
+
+  display: flex;
+  flex-flow: column;
+}
+
+.line {
+  display: flex;
+  
+  border: 3px solid grey;
+
+  flex: 1 1 auto;
+}
+
+.square {
+  border: 2px solid green;
+
+  flex: 1 1 auto;
 }
