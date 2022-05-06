@@ -17,6 +17,7 @@ function makeSquares(line, squares) {
     const div = document.createElement("div");
     div.classList.add("square");
     line.appendChild(div);
+    div.addEventListener("mouseover", paintSquare);
   }
 }
 
@@ -29,7 +30,9 @@ function makeGrid(dimension) {
   }
 }
 
-// hooks up the event listeners
+// paints the square
+function paintSquare() {
+  this.classList.add("blackSquare");
+}
 
 // removes the grid
-
