@@ -23,6 +23,14 @@ function makeSquares(line, squares) {
 
 // creates the grid for drawing
 function makeGrid(dimension) {
+  // deletes the old playground and makes new one
+  document.querySelector(".playground").remove();
+  const playground = document.createElement("div");
+  playground.classList.add("playground");
+  const main = document.querySelector(".main");
+  main.appendChild(playground);
+
+  // fill playground with lines, fills lines with squares
   makeLines(dimension);
   const lines = document.querySelectorAll(".line");
   for (const line of lines) {
@@ -35,4 +43,8 @@ function paintSquare() {
   this.classList.add("blackSquare");
 }
 
-// removes the grid
+// button for making new grid
+const dimensionsBtn = document.querySelector("#dimensions");
+dimensionsBtn.addEventListener("click", () => {
+  makeGrid(prompt("Number of squares per side:"));
+})
