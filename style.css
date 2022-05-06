@@ -25,7 +25,7 @@ body {
 }
 
 .playground {
-  border: 3px solid red;
+  border: 1px solid red;
 
   width: 250px;
   height: 250px;
@@ -38,13 +38,11 @@ body {
 .line {
   display: flex;
   
-  border: 3px solid grey;
 
   flex: 1 1 auto;
 }
 
 .square {
-  border: 2px solid green;
 
   flex: 1 1 auto;
 }
