@@ -1,0 +1,15 @@
+add lighten function
+
+custom color funtion?
+
+create buttons for selecting cursor type
+
+reset button?
+
+sliders for size or just preset size buttons (or both)
+
+make the playground box scale with screen size
+
+make css actually look good
+
+mobile compatibility
