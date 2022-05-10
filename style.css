@@ -47,7 +47,7 @@ body {
 
   flex: 1 1 auto;
   box-shadow: 0 0 3px rgba(91, 101, 114, 0.6);
-  background:
+  background-image:
   linear-gradient(
     rgba(0, 0, 0, 0.2), 
     rgba(0, 0, 0, 0.3)
