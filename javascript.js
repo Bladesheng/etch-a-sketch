@@ -1,5 +1,6 @@
 // initial setup
 makeGrid(16);
+let cursorStyle = "black";
 
 // creates x lines for the grid
 function makeLines(lines) {
@@ -40,7 +41,12 @@ function makeGrid(dimension) {
 
 // paints the square
 function paintSquare() {
-  this.classList.add("blackSquare");
+  if (cursorStyle === "black") {
+    this.classList.add("blackSquare");
+  }
+  else if (cursorStyle === "rainbow") {
+    this.style.backgroundColor = randomColor();
+  }
 }
 
 // button for making new grid
@@ -48,3 +54,8 @@ const dimensionsBtn = document.querySelector("#dimensions");
 dimensionsBtn.addEventListener("click", () => {
   makeGrid(prompt("Number of squares per side:"));
 })
+
+// generates random hex color
+function randomColor() {
+  return '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6);
+}
