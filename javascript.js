@@ -58,7 +58,7 @@ function makeGrid(dimension) {
 // paints the square
 function paintSquare() {
   if (cursorStyle === "black") {
-    this.classList.add("blackSquare");
+    this.style.backgroundColor = "black";
   }
   else if (cursorStyle === "rainbow") {
     this.style.backgroundColor = randomColor();
