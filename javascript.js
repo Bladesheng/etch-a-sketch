@@ -99,3 +99,9 @@ dimensionsBtn.addEventListener("click", () => {
 function randomColor() {
   return '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6);
 }
+
+// updates the grid size when sliding the slider
+const slider = document.querySelector(".slider");
+slider.oninput = () => {
+  makeGrid(slider.value);
+}

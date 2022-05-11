@@ -1,10 +1,13 @@
 custom color funtion?
 
-reset button?
+reset/wipe button?
 
-sliders for size or just preset size buttons (or both)
+preset size buttons
 
 make the playground box scale with screen size
+
+make slider look nice
+https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
 make css actually look good
 
