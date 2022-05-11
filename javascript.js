@@ -18,6 +18,11 @@ darkenBtn.addEventListener("click", () => {
   cursorStyle = "darken";
 })
 
+const lightenBtn = document.querySelector("#lighten");
+lightenBtn.addEventListener("click", () => {
+  cursorStyle = "lighten";
+})
+
 // creates x lines for the grid
 function makeLines(lines) {
   const playground = document.querySelector(".playground");
@@ -63,13 +68,20 @@ function paintSquare() {
   else if (cursorStyle === "rainbow") {
     this.style.backgroundColor = randomColor();
   }
-  else if (cursorStyle === "darken") {
+  else if (cursorStyle === "darken" || cursorStyle === "lighten") {
     // returns filter css property (containing brightness)
     let cssFilter = getComputedStyle(this).filter;
     // extracts brightness from the filter property
     let brightness = cssFilter.match(/\(([^)]+)\)/)[1];
-    // decreases brightness
-    brightness = +brightness - 0.1;
+ 
+    // decreases or increases brightness
+    if (cursorStyle === "darken") {
+      brightness = +brightness - 0.1;
+    }
+    else if (cursorStyle === "lighten") {
+      brightness = +brightness + 0.1;
+    }
+   
     // creates new filter property
     cssFilter = `brightness(${brightness})`;
     // inserts the filter property into the element

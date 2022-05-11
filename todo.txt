@@ -1,5 +1,3 @@
-add lighten function
-
 custom color funtion?
 
 reset button?
