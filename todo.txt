@@ -1,7 +1,5 @@
 custom color funtion?
 
-reset/wipe button?
-
 preset size buttons
 
 make the playground box scale with screen size

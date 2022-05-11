@@ -105,3 +105,9 @@ const slider = document.querySelector(".slider");
 slider.oninput = () => {
   makeGrid(slider.value);
 }
+
+// wipes the board, keep current size
+const wipeBtn = document.querySelector("#wipe");
+wipeBtn.addEventListener("click", () => {
+  makeGrid(slider.value);
+});
