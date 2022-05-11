@@ -2,6 +2,22 @@
 makeGrid(16);
 let cursorStyle = "black";
 
+// buttons for selecting cursor type
+const blackBtn = document.querySelector("#black");
+blackBtn.addEventListener("click", () => {
+  cursorStyle = "black";
+}) 
+
+const rainbowBtn = document.querySelector("#rainbow");
+rainbowBtn.addEventListener("click", () => {
+  cursorStyle = "rainbow";
+})
+
+const darkenBtn = document.querySelector("#darken");
+darkenBtn.addEventListener("click", () => {
+  cursorStyle = "darken";
+})
+
 // creates x lines for the grid
 function makeLines(lines) {
   const playground = document.querySelector(".playground");
