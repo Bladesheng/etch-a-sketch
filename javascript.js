@@ -64,27 +64,16 @@ function paintSquare() {
     this.style.backgroundColor = randomColor();
   }
   else if (cursorStyle === "darken") {
-    // returns current css backgroundImage property
-    let cssBackground = getComputedStyle(this).backgroundImage;
-    // extracts current alpha of the gradient
-    let gradientAlpha1 = cssBackground.substring(30, 33);
-    let gradientAlpha2 = cssBackground.substring(50, 53);
-
-    // doesn't go to 1.0 alpha to avoid bugs
-    // (1.0 rgba gets converted to normal rgb)
-    if (gradientAlpha2 < 0.9) {
-      // increments both alphas by 0.1
-      gradientAlpha1 = +gradientAlpha1 + 0.1;
-      gradientAlpha2 = +gradientAlpha2 + 0.1;
-
-      // creates new backgroundImage string
-      cssBackground = `linear-gradient(rgba(0, 0, 0, ${gradientAlpha1}), rgba(0, 0, 0, ${gradientAlpha2}))`;
-
-      // changes the backgroundImage property of the DOM element
-      this.style.backgroundImage = cssBackground;
-    }
-    // lighten if condtion goes here?
-
+    // returns filter css property (containing brightness)
+    let cssFilter = getComputedStyle(this).filter;
+    // extracts brightness from the filter property
+    let brightness = cssFilter.match(/\(([^)]+)\)/)[1];
+    // decreases brightness
+    brightness = +brightness - 0.1;
+    // creates new filter property
+    cssFilter = `brightness(${brightness})`;
+    // inserts the filter property into the element
+    this.style.filter = cssFilter;
   }
 }
 
