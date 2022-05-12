@@ -28,12 +28,18 @@ body {
   border: 1px solid red;
   background-color: white;
 
-  width: 250px;
-  height: 250px;
+  width: 80%;
+  aspect-ratio: 1 / 1;
 
 
   display: flex;
   flex-flow: column;
+}
+
+@media (min-width:700px) {
+  .playground {
+    width: 25%;
+  }
 }
 
 .line {

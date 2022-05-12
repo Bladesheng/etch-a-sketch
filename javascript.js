@@ -102,7 +102,7 @@ function randomColor() {
 
 // updates the grid size when sliding the slider
 const slider = document.querySelector(".slider");
-slider.oninput = () => {
+slider.onchange = () => {
   makeGrid(slider.value);
 }
 

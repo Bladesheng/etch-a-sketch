@@ -1,9 +1,3 @@
-custom color funtion?
-
-preset size buttons
-
-make the playground box scale with screen size
-
 make slider look nice
 https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
