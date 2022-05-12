@@ -1,6 +1,7 @@
 // initial setup
-makeGrid(16);
+const isTouchDevice = 'ontouchstart' in document.documentElement;
 let cursorStyle = "black";
+makeGrid(16);
 
 // buttons for selecting cursor type
 const blackBtn = document.querySelector("#black");
@@ -39,7 +40,9 @@ function makeSquares(line, squares) {
     const div = document.createElement("div");
     div.classList.add("square");
     line.appendChild(div);
-    div.addEventListener("touchmove", paintSquare);
+    if (! isTouchDevice) { // to prevent mouseover bugs on mobile
+      div.addEventListener("mouseover", paintSquare);
+    }
   }
 }
 
@@ -61,16 +64,21 @@ function makeGrid(dimension) {
 }
 
 // paints the square
-function paintSquare() {
+function paintSquare(squareNode) {
+  // correction for PC - eventListener passes mouseover event as squareNode
+  if (squareNode.nodeType === undefined) {
+    squareNode = this;
+  }
+
   if (cursorStyle === "black") {
-    this.style.backgroundColor = "black";
+    squareNode.style.backgroundColor = "black";
   }
   else if (cursorStyle === "rainbow") {
-    this.style.backgroundColor = randomColor();
+    squareNode.style.backgroundColor = randomColor();
   }
   else if (cursorStyle === "darken" || cursorStyle === "lighten") {
     // returns filter css property (containing brightness)
-    let cssFilter = getComputedStyle(this).filter;
+    let cssFilter = getComputedStyle(squareNode).filter;
     // extracts brightness from the filter property
     let brightness = cssFilter.match(/\(([^)]+)\)/)[1];
  
@@ -85,7 +93,7 @@ function paintSquare() {
     // creates new filter property
     cssFilter = `brightness(${brightness})`;
     // inserts the filter property into the element
-    this.style.filter = cssFilter;
+    squareNode.style.filter = cssFilter;
   }
 }
 
@@ -111,3 +119,68 @@ const wipeBtn = document.querySelector("#wipe");
 wipeBtn.addEventListener("click", () => {
   makeGrid(slider.value);
 });
+
+
+// mobile version
+// tracks finger position and paints on touch devices
+// code borrowed from: https://stackoverflow.com/questions/60460226/what-is-the-best-way-to-simulate-mouseover-on-mobile-browsers-with-touch-events
+
+if (isTouchDevice) { // mobile only
+  // initial setup
+  let isActivelyPainting = false;
+  let currHoverTarget = null;
+
+  // fires everytime you touch the screen for the first time
+  document.addEventListener("touchstart", (evt) => {
+    // first thing you touch
+    let target = evt.target;
+
+    // proceed only with elements that are paintable (squares)
+    if (target.classList.contains("square")) {
+      isActivelyPainting = true;
+      currHoverTarget = target;
+
+      // paints the touched square
+      paintSquare(currHoverTarget);
+
+      // stop mobile scrolling
+      evt.preventDefault();
+    }
+  }, {
+    passive: false // Needed to avoid errors in some browsers
+  })
+
+  // fires everytime you move your finger over the screen
+  document.addEventListener("touchmove", (evt) => {
+    // only if you already touched the screen
+    if (isActivelyPainting) { 
+      // the original square you touched
+      let target = evt.target;
+      
+      // the if condition is probably not even necessary
+      // just double checking
+      if (target.classList.contains("square")) {
+        // tracks finger position
+        let x = evt.touches[0].clientX;
+        let y = evt.touches[0].clientY;
+        // selects element at finger position
+        let hoveredElem = document.elementFromPoint(x, y);
+
+        // checks if you moved out of the previous square to a different element and if that element is still square
+        if (hoveredElem !== currHoverTarget && hoveredElem.classList.contains("square")) {
+          // paints the newly selected square
+          paintSquare(hoveredElem);
+
+          // changes the current square to the newly hovered over square (the one you just paitned)
+          currHoverTarget = hoveredElem;
+        }
+      }
+    }
+  })
+
+  // disengages the touchmove tracking function when your finger is off the screen 
+  document.addEventListener("touchend", () => {
+    isActivelyPainting = false;
+    currHoverTarget = null;
+  })
+}
