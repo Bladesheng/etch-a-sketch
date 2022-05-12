@@ -39,7 +39,7 @@ function makeSquares(line, squares) {
     const div = document.createElement("div");
     div.classList.add("square");
     line.appendChild(div);
-    div.addEventListener("mouseover", paintSquare);
+    div.addEventListener("touchstart", paintSquare);
   }
 }
 
