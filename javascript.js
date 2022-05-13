@@ -1,12 +1,14 @@
 // initial setup
 const isTouchDevice = 'ontouchstart' in document.documentElement;
-let cursorStyle = "black";
+let cursorStyle = "customColor";
 makeGrid(16);
 
 // buttons for selecting cursor type
-const blackBtn = document.querySelector("#black");
-blackBtn.addEventListener("click", () => {
-  cursorStyle = "black";
+const colorpicker = document.querySelector(".colorpicker");
+
+const customColorBtn = document.querySelector("#customColor");
+customColorBtn.addEventListener("click", () => {
+  cursorStyle = "customColor";
 }) 
 
 const rainbowBtn = document.querySelector("#rainbow");
@@ -52,8 +54,8 @@ function makeGrid(dimension) {
   document.querySelector(".playground").remove();
   const playground = document.createElement("div");
   playground.classList.add("playground");
-  const main = document.querySelector(".main");
-  main.appendChild(playground);
+  const main = document.querySelector(".controls");
+  main.after(playground);
 
   // fill playground with lines, fills lines with squares
   makeLines(dimension);
@@ -70,8 +72,8 @@ function paintSquare(squareNode) {
     squareNode = this;
   }
 
-  if (cursorStyle === "black") {
-    squareNode.style.backgroundColor = "black";
+  if (cursorStyle === "customColor") {
+    squareNode.style.backgroundColor = colorpicker.value;
   }
   else if (cursorStyle === "rainbow") {
     squareNode.style.backgroundColor = randomColor();
@@ -98,10 +100,10 @@ function paintSquare(squareNode) {
 }
 
 // button for making new grid
-const dimensionsBtn = document.querySelector("#dimensions");
-dimensionsBtn.addEventListener("click", () => {
-  makeGrid(prompt("Number of squares per side:"));
-})
+// const dimensionsBtn = document.querySelector("#dimensions");
+// dimensionsBtn.addEventListener("click", () => {
+//   makeGrid(prompt("Number of squares per side:"));
+// })
 
 // generates random hex color
 function randomColor() {

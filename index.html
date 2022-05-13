@@ -5,27 +5,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etch a Sketch</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  </style>
   <link rel="stylesheet" href="style.css">
   <script src="javascript.js" defer></script>
 </head>
 <body>
+  <div class="header">
+    <h1 class="title">Etch-a-sketch</h1>
+  </div>
 
-  <div class="controls">
-    <button id="dimensions">Specific grid</button>
-    <button id="black">Black</button>
-    <button id="rainbow">Rainbow</button>
-    <button id="darken">Darken</button>
-    <button id="lighten">Lighten</button>
-    <button id="wipe">Wipe</button>
+
+
+  <div class="main">
+    <div class="controls">
+      <input type="color" class="colorpicker">
+      <button id="customColor">Color mode</button>
+      <button id="rainbow">Rainbow</button>
+      <button id="darken">Darken</button>
+      <button id="lighten">Lighten</button>
+      <button id="wipe">Wipe</button>
+    </div>
+
+    <div class="playground"></div>
+
     <div class="slidecontainer">
       <input type="range" min="1" max="60" value="16" class="slider">
     </div>
+
   </div>
 
-  <div class="main">
-    <div class="playground">
-
-    </div>
+  <div class="footer">
+    Built by <a href="https://github.com/Bladesheng">Bladesheng</a>
   </div>
   
 </body>

@@ -3,6 +3,7 @@ body {
   padding: 0px;
   background-color: rgb(14, 15, 22);
   color: rgb(192, 192, 192);
+  font-family: 'Roboto', sans-serif;
 
   box-sizing: border-box;
   height: 100vh;
@@ -10,18 +11,35 @@ body {
   flex-flow: column;
 }
 
+.title {
+  text-align: center;
+  font-weight: 700;
+}
+
+.main {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  flex: 1 1 auto;
+}
+
 .controls {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+
   height: 15%;
 
   flex: 0 1 auto;
 }
 
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  flex: 1 1 auto;
+button {
+  font-family: 'Roboto', sans-serif;
+  height: 55px;
+  
+  flex: 0 1 auto;
 }
 
 .playground {
@@ -60,4 +78,9 @@ body {
   );
   background-color: white;
   filter: brightness(1);
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
 }
