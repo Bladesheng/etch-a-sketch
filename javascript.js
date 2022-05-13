@@ -4,7 +4,7 @@ let cursorStyle = "customColor";
 makeGrid(16);
 
 // buttons for selecting cursor type
-const colorpicker = document.querySelector(".colorpicker");
+const colorpicker = document.querySelector("#colorpicker");
 
 const customColorBtn = document.querySelector("#customColor");
 customColorBtn.addEventListener("click", () => {

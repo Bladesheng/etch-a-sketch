@@ -1,5 +1,3 @@
-color picker?
-
 make slider look nice
 https://www.w3schools.com/howto/howto_js_rangeslider.asp
 
