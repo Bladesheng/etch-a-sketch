@@ -3,28 +3,32 @@ const isTouchDevice = 'ontouchstart' in document.documentElement;
 let cursorStyle = "customColor";
 makeGrid(16);
 
-// buttons for selecting cursor type
 const colorpicker = document.querySelector("#colorpicker");
 
+// buttons for selecting cursor type
 const customColorBtn = document.querySelector("#customColor");
-customColorBtn.addEventListener("click", () => {
-  cursorStyle = "customColor";
-}) 
+customColorBtn.addEventListener("click", activateBtn);
 
 const rainbowBtn = document.querySelector("#rainbow");
-rainbowBtn.addEventListener("click", () => {
-  cursorStyle = "rainbow";
-})
+rainbowBtn.addEventListener("click", activateBtn);
 
 const darkenBtn = document.querySelector("#darken");
-darkenBtn.addEventListener("click", () => {
-  cursorStyle = "darken";
-})
+darkenBtn.addEventListener("click", activateBtn);
 
 const lightenBtn = document.querySelector("#lighten");
-lightenBtn.addEventListener("click", () => {
-  cursorStyle = "lighten";
-})
+lightenBtn.addEventListener("click", activateBtn);
+
+// highlights selected button
+function activateBtn() {
+  // previously selected button
+  const prevBtn = document.querySelector(`#${cursorStyle}`);
+  // deactives previous button
+  prevBtn.classList.remove("active");
+  // activates clicked button
+  this.classList.add("active");
+  // changes cursor style
+  cursorStyle = this.id;
+}
 
 // creates x lines for the grid
 function makeLines(lines) {
