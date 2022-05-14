@@ -77,9 +77,15 @@ function paintSquare(squareNode) {
   }
 
   if (cursorStyle === "customColor") {
+    // makes sure there is no brightness style, so that the darken/lighten isn't permanent
+    squareNode.style = "";
+
     squareNode.style.backgroundColor = colorpicker.value;
   }
   else if (cursorStyle === "rainbow") {
+    // makes sure there is no brightness style, so that the darken/lighten isn't permanent
+    squareNode.style = "";
+
     squareNode.style.backgroundColor = randomColor();
   }
   else if (cursorStyle === "darken" || cursorStyle === "lighten") {

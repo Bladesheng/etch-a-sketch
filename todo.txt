@@ -1,8 +1,1 @@
-make color mode and rainbow mode delete brightness
-
-selectable buttons effect
-
-make slider look nice
-https://www.w3schools.com/howto/howto_js_rangeslider.asp
-
-make css actually look good
+make sure scaling is ok everywhere
