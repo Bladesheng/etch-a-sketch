@@ -49,6 +49,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   gap: 10px;
+  width: 60%;
 
   flex: 0 1 auto;
 }
@@ -94,7 +95,7 @@ input[type="color"] {
 
 button {
   height: 40px;
-  width: 115px;
+  width: 100%;
 
   color: var(--primary-dark);
   background-color: var(--primary-light);
@@ -123,9 +124,12 @@ button {
   flex-flow: column;
 }
 
-@media (min-width:700px) {
+@media (min-width:500px) {
+  .controls {
+    width: 250px;
+  }
   .playground {
-    width: 25%;
+    width: 440px;
   }
 }
 
@@ -189,10 +193,16 @@ button {
 /* FOOTER */
 
 .footer {
+  font-size: 12px;
   text-align: center;
   padding: 10px;
 
   color: var(--secondary-dark);
   
   flex: 0 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-dark);
 }
